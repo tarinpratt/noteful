@@ -8,6 +8,7 @@ import NoteNav from './noteNav/noteNav';
 import AddNote from './addNote/addNote';
 import AddFolder from './addFolder/addFolder';
 import StoreContext from './storeContext';
+import ErrorHandler from './errorHandler/errorHandler';
 import config from './config';
 import './App.css';
 
@@ -21,8 +22,6 @@ class App extends Component {
             folders: []
       };
       }
-  
-
   
   componentDidMount() {
     Promise.all([
@@ -41,12 +40,11 @@ class App extends Component {
         })
 
         .then(([myNotes, myFolders]) => {
-            console.log('api data', myNotes, myFolders)
         this.setState({notes: myNotes, folders: myFolders})
         
         })
         .catch(error => {
-            console.error({error});
+            this.setState({ error })
         });
         
         
@@ -145,8 +143,12 @@ render() {
               </h1>
           </header>
           <div className='App_Container'>
+            <ErrorHandler>
           <nav className="App__nav">{this.renderNavRoutes()}</nav>
+            </ErrorHandler>
+            <ErrorHandler>
           <main className="App__main">{this.renderMainRoutes()}</main>
+            </ErrorHandler>
           </div>
       </div>
       </StoreContext.Provider>

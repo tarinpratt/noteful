@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom'
+import PropTypes from 'prop-types';
 import './sideBar.css';
 import StoreContext from '../storeContext';
 
@@ -9,7 +10,7 @@ class SideBar extends Component {
     render(){
       
       const { folders = [] } = this.context
-      console.log('sidebar', folders)
+      
   return <ul className='folderList_List'>
       {folders.map((folder) => {
        return <li className='folderList' key ={folder.id}>
@@ -27,3 +28,8 @@ class SideBar extends Component {
       }
     }
 export default SideBar;
+
+SideBar.PropType = {
+  name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired
+}

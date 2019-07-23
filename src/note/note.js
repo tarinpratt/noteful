@@ -2,13 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
 import StoreContext from '../storeContext';
+import PropTypes from 'prop-types';
 import config from '../config';
 import './note.css';
 
 export default class Note extends React.Component {
-  static defaultProps ={
-    onDeleteNote: () => {},
-  }
+  
   static contextType = StoreContext;
 
   handleDelete = e => {
@@ -30,8 +29,7 @@ export default class Note extends React.Component {
         this.context.deleteNote(noteId)  
       })
       .catch(error => {
-        console.error({error});
-    
+        this.setState({ error })
     });
   }
   render(){
@@ -52,4 +50,15 @@ export default class Note extends React.Component {
                 Delete Note</button> 
           </li>
   }
+}
+
+Note.defaultProps ={
+  onDeleteNote: () => {},
+}
+
+Note.propType = {
+  name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  modified: PropTypes.string.isRequired,
+  onDeleteNote: PropTypes.func
 }

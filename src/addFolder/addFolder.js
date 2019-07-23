@@ -1,24 +1,40 @@
 import React from 'react';
 import StoreContext from '../storeContext';
+import ValidationError from '../validationError';
+import PropTypes from 'prop-types';
 import config from '../config';
 import './addFolder.css';
-
-
 
 export default class AddFolder extends React.Component {
     constructor(props) {
         super(props);
-        this.nameInput = React.createRef();
+        this.state = {
+            name: {
+                value: '',
+                touched: false
+            },
+        }
       }
     
   static contextType = StoreContext;
 
+  updateName(name) {
+    this.setState({name: {value: name, touched: true}});
+  }
+  
+  validateName() {
+    const name = this.state.name.value.trim();
+    if (name.length < 1) {
+      return '* Name is required *';
+    } 
+  }
+
 handleSubmit = event => {
 event.preventDefault()
 const addedFolder = {
-    name: this.nameInput.current.value,
+    name: this.state.name.value,
 }
-console.log('added folder', addedFolder)
+
 
 fetch(`${config.API_ENDPOINT}/folders`, {
   method: 'POST',
@@ -28,19 +44,16 @@ fetch(`${config.API_ENDPOINT}/folders`, {
   },
 })
   .then(res => {
-    if(!res.ok)
-      return res.json().then(err => {
-        console.log(err)
-        throw err
-  })
+    if(!res.ok) {
+      return res.json().then(error => Promise.reject(error))
+  }
     return res.json()
   })
   .then(data => {
       this.context.addFolder(data)
   })
   .catch(error => {
-    console.error({error});
-
+    this.setState({ error })
 });
 
 }
@@ -51,11 +64,20 @@ fetch(`${config.API_ENDPOINT}/folders`, {
     <div className="form-group">
       <label htmlFor="name">Name</label>
       <input type="text" className="folderName"
-        name="name" id="name" ref={this.nameInput}/>
+        name="name" id="name" onChange={e => this.updateName(e.target.value)}/>
+        {this.state.name.touched && (
+  <ValidationError message={this.validateName()} />
+)}
     </div>
-     <button type="submit" className="addFolderButton">
+     <button type="submit" className="addFolderButton"
+      disabled={
+        this.validateName()}>
          Add Folder
      </button>
   </form>
   }
+}
+
+AddFolder.propType = {
+    name: PropTypes.string.isRequired
 }

@@ -1,17 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { getNotesForFolder } from '../helpers';
+import PropTypes from 'prop-types';
 import Note from '../note/note';
 import './noteList.css';
 import StoreContext from '../storeContext';
 
 
 export default class NoteList extends React.Component {
-  static defaultProps = {
-    match: {
-      params: {}
-    }
-  }
+  
  static contextType = StoreContext;
    
     render(){
@@ -22,7 +19,7 @@ export default class NoteList extends React.Component {
           notes,
           folderId
       );
-     console.log('notes', notes)
+    
   return <ul className='noteList_List'>
       {notesForFolder.map((note) => 
       
@@ -41,4 +38,15 @@ export default class NoteList extends React.Component {
       </Link>
       </ul>
       }
+    }
+    NoteList.defaultProps = {
+      match: {
+        params: {}
+      }
+    }
+
+    NoteList.propType = {
+      match: PropTypes.object.isRequired,
+      params: PropTypes.object.isRequired
+     
     }
