@@ -1,0 +1,31 @@
+.App {
+  width: 100%;
+}
+
+header {
+  border-bottom: 2px grey solid; 
+  text-align: center;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  cursor: pointer;
+  color: green;
+}
+
+.App_Container {
+  display: flex;
+  flex-direction: row;
+}
+nav {
+  width: 100%;
+}
+main {
+  width: 100%;
+}
+
+
+

@@ -1,0 +1,39 @@
+.folderList {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    padding: 15px;
+    border: 1px solid black;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+    
+}
+
+ .folderList .active {
+    background-color: yellow;
+}
+
+.addFolder {
+    display: block;
+    width: 200px;
+    height: 33px;
+    font-size: 15px;
+    
+}
+
+.folderList {
+    font-size: 28px;
+    height: 33px;
+    width: 200px;
+    margin-left: 0px;
+    padding: 0px;
+}
+
+ul .folderList_List {
+    margin-top: 0px;
+}
+
+a {
+    padding: 0px;
+}

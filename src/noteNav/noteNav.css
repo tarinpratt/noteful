@@ -1,0 +1,21 @@
+.noteNav {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.backButton {
+    width: 200px;
+    height: 50px;
+    font-size: 15px;
+}
+
+.backButton:hover {
+    cursor: pointer;
+    background-color: green;
+}
+
+h3 {
+    font-size: 30px;
+    text-align: center;
+    color: green;
+}

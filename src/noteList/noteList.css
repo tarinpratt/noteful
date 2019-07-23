@@ -1,0 +1,38 @@
+.notes {
+    width: 100%;
+}
+ul .noteList_list {
+    width: 100%;
+}
+h2.noteTitle {
+    padding: 0px;
+}
+
+li {
+    list-style-type: none;
+    border: 1px solid black;
+    margin: 10px;
+    width: 600px;
+    height: 150px;
+}
+ .noteTitle {
+     padding: 30px;
+ }
+
+ .noteDate {
+     margin-left: 10px;
+     padding-top: 10px;
+     padding-bottom: 0px;
+ }
+
+ .deleteButton {
+     margin-left: 375px;
+     margin-bottom: 30px;
+ }
+
+ .addNote {
+     height: 50px;
+     width: 200px;
+     margin-left: 20px;
+     font-size: 15px;
+ }

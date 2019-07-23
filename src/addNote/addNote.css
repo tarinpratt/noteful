@@ -1,0 +1,43 @@
+form.addNote {
+    height: 300px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 25px;
+}
+
+label {
+    display: block;
+    padding-bottom: 5px;
+}
+
+.form-group {
+    padding: 3px;
+}
+
+.noteName {
+    height: 20px;
+}
+
+.noteContent {
+    height: 50px;
+}
+#folderClassId {
+    height: 30px;
+    width: 100px;
+}
+#folderClassId:hover {
+    cursor: pointer;
+}
+
+.addNoteButton {
+    margin-top: 10px;
+    margin-left: 15px;
+    height: 30px;
+    border-radius: 7px;
+}
+.addNoteButton:hover {
+    cursor: pointer;
+    background-color: green;
+}

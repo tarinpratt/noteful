@@ -1,0 +1,22 @@
+.folderName {
+    height: 20px;
+    width: 300px;
+}
+
+h2 {
+    margin-bottom: 0px;
+}
+
+label {
+    padding: 10px;
+}
+.addFolderButton {
+    margin-top: 10px;
+    margin-left: 15px;
+    height: 30px;
+    border-radius: 7px;
+}
+.addFolderButton:hover {
+    cursor: pointer;
+    background-color: green;
+}
