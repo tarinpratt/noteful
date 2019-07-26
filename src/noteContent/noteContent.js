@@ -12,7 +12,7 @@ export default class NoteContent extends React.Component {
             const { notes= [] } = this.context
             const {noteId} = this.props.match.params;
             const note = findNote(notes, noteId) || { content: '' };
-        
+        console.log(notes)
         return <div className='selectedNote'>
             <Note 
             id={note.id}
