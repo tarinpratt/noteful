@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { getNotesForFolder } from '../helpers';
 import PropTypes from 'prop-types';
@@ -19,8 +19,9 @@ export default class NoteList extends React.Component {
           notes,
           folderId
       );
-    
-  return <ul className='noteList_List'>
+   
+  return <Fragment>
+  <ul className='noteList_List'>
       {notesForFolder.map((note) => 
       
         <Note 
@@ -30,13 +31,14 @@ export default class NoteList extends React.Component {
     
     
       )}
+      </ul>
       <Link to='/add-note'>
         <button className='addNote'
         >
           Add Note
         </button>
       </Link>
-      </ul>
+      </Fragment>
       }
     }
     NoteList.defaultProps = {
@@ -46,7 +48,10 @@ export default class NoteList extends React.Component {
     }
 
     NoteList.propType = {
-      match: PropTypes.object.isRequired,
-      params: PropTypes.object.isRequired
+      match: PropTypes.shape({
+        params: PropTypes.shape({
+          folderId: PropTypes.string,
+        }).isRequired,
+    }).isRequired
      
     }

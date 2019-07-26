@@ -13,7 +13,7 @@ export default class NoteNav extends React.Component {
     const {noteId} = this.props.match.params;
     const note = findNote(notes, noteId) || {};
     const folder = findFolder(folders, note.folderId);
-console.log('notenav', this.props.history)
+
     return <div className='noteNav'>
         <button className='backButton'
             onClick={() => this.props.history.push('/')}>
@@ -33,8 +33,15 @@ NoteNav.defaultProps = {
     params: {}
   }
 }
+
 NoteNav.propType = {
-  push: PropTypes.func.isRequired,
-  match: PropTypes.object.isRequired,
-  params: PropTypes.object.isRequired
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      noteId: PropTypes.string,
+    }).isRequired,
+}).isRequired
+  
 }

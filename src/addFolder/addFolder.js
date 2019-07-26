@@ -1,7 +1,6 @@
 import React from 'react';
 import StoreContext from '../storeContext';
 import ValidationError from '../validationError';
-import PropTypes from 'prop-types';
 import config from '../config';
 import './addFolder.css';
 
@@ -63,8 +62,14 @@ fetch(`${config.API_ENDPOINT}/folders`, {
     <h2>Create a folder</h2> 
     <div className="form-group">
       <label htmlFor="name">Name</label>
-      <input type="text" className="folderName"
-        name="name" id="name" onChange={e => this.updateName(e.target.value)}/>
+      <input 
+      type="text" 
+      className="folderName"
+      name="name" 
+      id="name"
+      aria-label="Name for folder"
+      aria-required="true" 
+      onChange={e => this.updateName(e.target.value)}/>
         {this.state.name.touched && (
   <ValidationError message={this.validateName()} />
 )}
@@ -76,8 +81,4 @@ fetch(`${config.API_ENDPOINT}/folders`, {
      </button>
   </form>
   }
-}
-
-AddFolder.propType = {
-    name: PropTypes.string.isRequired
 }

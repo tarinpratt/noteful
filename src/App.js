@@ -132,7 +132,7 @@ render() {
     addNote: this.handleAddNote,
     addFolder: this.handleAddFolder
     }
-    console.log('STATE', this.state)
+
   return (
       <StoreContext.Provider value={contextValue}>
       <div className="App">
@@ -149,6 +149,7 @@ render() {
             <ErrorHandler>
           <main className="App__main">{this.renderMainRoutes()}</main>
             </ErrorHandler>
+           
           </div>
       </div>
       </StoreContext.Provider>

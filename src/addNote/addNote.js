@@ -1,6 +1,5 @@
 import React from 'react';
 import StoreContext from '../storeContext';
-import PropTypes from 'prop-types';
 import ValidationError from '../validationError';
 import config from '../config';
 import './addNote.css';
@@ -16,7 +15,11 @@ export default class AddNote extends React.Component {
             content: {
                 value: '',
                 touched: false
+            },
+            folderId: {
+              value:''
             }
+
 
         }
       }
@@ -28,6 +31,10 @@ export default class AddNote extends React.Component {
 
   updateContent(content) {
     this.setState({content: {value: content, touched: true}});
+  }
+
+  updateFolderId(folderId) {
+    this.setState({folderId: {value: folderId}});
   }
   
   validateName() {
@@ -48,7 +55,7 @@ handleSubmit = event => {
     const addedNote = {
         name: this.state.name.value,
         content: this.state.content.value,
-        folderId: event.target.folderClassId.value,
+        folderId: this.state.folderId.value,
         modified: new Date()
     }
   
@@ -74,35 +81,52 @@ handleSubmit = event => {
 }
   render(){
     const { folders=[] } = this.context
-
+console.log('add ntoe', this.props)
     return <form className="addNote" onSubmit={e => this.handleSubmit(e)}>
     <h2>Add Note</h2> 
-    <div className="form-group">
+    <section className="form-group">
       <label htmlFor="name">Name</label>
-      <input type="text" className="noteName"
-        name="name" id="name" onChange={e => this.updateName(e.target.value)}/>
+      <input 
+      type="text" 
+      className="noteName"
+      name="name" 
+      id="name"
+      aria-label="Name title for added note"
+      aria-required="true"
+      onChange={e => this.updateName(e.target.value)}/>
         {this.state.name.touched && (
   <ValidationError message={this.validateName()} />
 )}
-    </div>
-    <div className="form-group">
+    </section>
+    <section className="form-group">
        <label htmlFor="content">Content</label>
-       <input type="text" className="noteContent"
-        name="content" id="content" onChange={e => this.updateContent(e.target.value)}/>
+       <input 
+       type="text" 
+       className="noteContent"
+       name="content" 
+       id="content"
+       aria-label="Content for added note"
+       aria-required="true" onChange={e => this.updateContent(e.target.value)}/>
             {this.state.content.touched && (
   <ValidationError message={this.validateContent()} />
 )}
-   </div>
-   <div className="form-group">
+   </section>
+   <section className="form-group">
        <label htmlFor="folderClass">Folder</label>
-       <select id="folderClassId" name="folderClassId" >
+       <select 
+       type="text"
+       id="folderId" 
+       name="folderId"
+       aria-label="Folder to file added note under"
+       aria-required="true" 
+       onChange={e => this.updateFolderId(e.target.value)}>
            {folders.map((folder) => 
             <option key={folder.id} value={folder.id}>
                 {folder.name}
             </option>
             )}
        </select>
-   </div>
+   </section>
      <button type="submit" className="addNoteButton"
      disabled={
         this.validateName() ||
@@ -111,11 +135,4 @@ handleSubmit = event => {
      </button>
   </form>
   }
-}
-
-AddNote.PropType = {
-    name: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
-    folderId: PropTypes.string.isRequired,
-    modified: PropTypes.string.isRequired
 }

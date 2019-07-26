@@ -41,9 +41,9 @@ export default class Note extends React.Component {
               {this.props.name}
               </Link>
               </h2>
-             <div className='noteDate'>
+             <p className='noteDate'>
                Date modified on  {format(this.props.modified, 'Do MMM YYYY')}
-               </div> 
+               </p> 
               <button className='deleteButton'
               type='button'
               onClick={this.handleDelete}>

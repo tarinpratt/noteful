@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { NavLink, Link } from 'react-router-dom'
-import PropTypes from 'prop-types';
 import './sideBar.css';
 import StoreContext from '../storeContext';
 
@@ -11,7 +10,8 @@ class SideBar extends Component {
       
       const { folders = [] } = this.context
       
-  return <ul className='folderList_List'>
+  return <Fragment>
+  <ul className='folderList_List'>
       {folders.map((folder) => {
        return <li className='folderList' key ={folder.id}>
                 <NavLink to={`/folder/${folder.id}`}>
@@ -19,17 +19,14 @@ class SideBar extends Component {
                 </NavLink>
             </li>
             })}
+            </ul>
             <Link to='/add-folder'>
          <button className='addFolder'>
           Add Folder
         </button>
         </Link>
-      </ul>
+      </Fragment>
       }
     }
 export default SideBar;
 
-SideBar.PropType = {
-  name: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired
-}
