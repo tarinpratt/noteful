@@ -83,7 +83,7 @@ handleSubmit = event => {
     });
 }
   render(){
-    console.log(this.state.folder_id)
+    
     const { folders=[] } = this.context
 
     return <form className="addNote" onSubmit={e => this.handleSubmit(e)}>
