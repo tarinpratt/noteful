@@ -26,33 +26,3 @@ exports[`Note component renders a Note 1`] = `
   </button>
 </li>
 `;
-
-exports[`Note component renders a Note w/ props 1`] = `
-<li
-  className="noteList"
-  key="x"
->
-  <h2
-    className="noteTitle"
-  >
-    <Link
-      to="/note/x"
-    >
-      name
-    </Link>
-  </h2>
-  <p
-    className="noteDate"
-  >
-    Date modified on  
-    26th Aug 2019
-  </p>
-  <button
-    className="deleteButton"
-    onClick={[Function]}
-    type="button"
-  >
-    Delete Note
-  </button>
-</li>
-`;
