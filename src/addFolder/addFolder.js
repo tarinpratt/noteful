@@ -8,7 +8,7 @@ export default class AddFolder extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: {
+            folder_name: {
                 value: '',
                 touched: false
             },
@@ -18,11 +18,11 @@ export default class AddFolder extends React.Component {
   static contextType = StoreContext;
 
   updateName(name) {
-    this.setState({name: {value: name, touched: true}});
+    this.setState({folder_name: {value: name, touched: true}});
   }
   
   validateName() {
-    const name = this.state.name.value.trim();
+    const name = this.state.folder_name.value.trim();
     if (name.length < 1) {
       return '* Name is required *';
     } 
@@ -31,7 +31,7 @@ export default class AddFolder extends React.Component {
 handleSubmit = event => {
 event.preventDefault()
 const addedFolder = {
-    name: this.state.name.value,
+    folder_name: this.state.folder_name.value,
 }
 
 
@@ -57,7 +57,7 @@ fetch(`${config.API_ENDPOINT}/folders`, {
 
 }
   render(){
-    
+  
     return <form className="addFolder" onSubmit={event =>this.handleSubmit(event)}>
     <h2>Create a folder</h2> 
     <div className="form-group">
@@ -65,12 +65,12 @@ fetch(`${config.API_ENDPOINT}/folders`, {
       <input 
       type="text" 
       className="folderName"
-      name="name" 
-      id="name"
+      name="folder_name" 
+      id="folder_name"
       aria-label="Name for folder"
       aria-required="true" 
       onChange={e => this.updateName(e.target.value)}/>
-        {this.state.name.touched && (
+        {this.state.folder_name.touched && (
   <ValidationError message={this.validateName()} />
 )}
     </div>

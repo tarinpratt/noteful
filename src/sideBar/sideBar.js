@@ -15,7 +15,7 @@ class SideBar extends Component {
       {folders.map((folder) => {
        return <li className='folderList' key ={folder.id}>
                 <NavLink to={`/folder/${folder.id}`}>
-                    {folder.name}
+                    {folder.folder_name}
                 </NavLink>
             </li>
             })}

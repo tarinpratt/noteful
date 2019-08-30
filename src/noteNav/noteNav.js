@@ -9,10 +9,11 @@ export default class NoteNav extends React.Component {
 
   static contextType = StoreContext;
   render(){
+   
     const {notes, folders} = this.context
     const {noteId} = this.props.match.params;
-    const note = findNote(notes, noteId) || {};
-    const folder = findFolder(folders, note.folderId);
+    const note = findNote(notes, parseInt(noteId)) || {};
+    const folder = findFolder(folders, note.folder_id);
 
     return <div className='noteNav'>
         <button className='backButton'
@@ -21,7 +22,7 @@ export default class NoteNav extends React.Component {
             </button>
             {folder && (
         <h3 className='NotePageNav__folder-name'>
-          {folder.name}
+          {folder.folder_name}
         </h3>
       )}
     </div>

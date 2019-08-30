@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SideBar component renders Folders 1`] = `
+<Fragment>
+  <ul
+    className="folderList_List"
+  />
+  <Link
+    to="/add-folder"
+  >
+    <button
+      className="addFolder"
+    >
+      Add Folder
+    </button>
+  </Link>
+</Fragment>
+`;
+
+exports[`SideBar component renders Folders list w/ props 1`] = `
+<Fragment>
+  <ul
+    className="folderList_List"
+  />
+  <Link
+    to="/add-folder"
+  >
+    <button
+      className="addFolder"
+    >
+      Add Folder
+    </button>
+  </Link>
+</Fragment>
+`;
+
+exports[`SideBar component renders Folders w/ props 1`] = `
+<Fragment>
+  <ul
+    className="folderList_List"
+  />
+  <Link
+    to="/add-folder"
+  >
+    <button
+      className="addFolder"
+    >
+      Add Folder
+    </button>
+  </Link>
+</Fragment>
+`;

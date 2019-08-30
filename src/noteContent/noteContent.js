@@ -10,17 +10,18 @@ export default class NoteContent extends React.Component {
     static contextType = StoreContext;
     render() {
             const { notes= [] } = this.context
+           
             const {noteId} = this.props.match.params;
-            const note = findNote(notes, noteId) || { content: '' };
-        console.log(notes)
+
+            const note = findNote(notes, parseInt(noteId)) || { note_content: '' };
+   
         return <div className='selectedNote'>
-            <Note 
-            id={note.id}
-            name={note.name}
-            modified={note.modified}
-            /> 
+             <Note 
+            key={note.id}
+            {...note}
+             />
             <div className='noteContent'>
-                {note.content.split(/\n \r|\n/).map((text, i) =>
+                {note.note_content.split(/\n \r|\n/).map((text, i) =>
                 <p key={i}>{text}</p>)}
             </div>
         </div>

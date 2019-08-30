@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { getNotesForFolder } from '../helpers';
 import PropTypes from 'prop-types';
@@ -14,12 +14,15 @@ export default class NoteList extends React.Component {
     render(){
     
     const { notes=[] } = this.context
+  
     const {folderId} = this.props.match.params
-    const notesForFolder = getNotesForFolder(
-          notes,
-          folderId
-      );
    
+     const notesForFolder = getNotesForFolder(
+           notes,
+           folderId
+       );
+     
+ 
   return <Fragment>
   <ul className='noteList_List'>
       {notesForFolder.map((note) => 

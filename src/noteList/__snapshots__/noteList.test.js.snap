@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoteList component renders Note List 1`] = `
+<Fragment>
+  <ul
+    className="noteList_List"
+  />
+  <Link
+    to="/add-note"
+  >
+    <button
+      className="addNote"
+    >
+      Add Note
+    </button>
+  </Link>
+</Fragment>
+`;
+
+exports[`NoteList component renders a Note in ul for each notes in array 1`] = `
+<ul
+  className="noteList_List"
+/>
+`;

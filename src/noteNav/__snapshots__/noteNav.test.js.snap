@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoteNav component renders Note Navigation 1`] = `
+<div
+  className="noteNav"
+>
+  <button
+    className="backButton"
+    onClick={[Function]}
+  >
+    Back
+  </button>
+</div>
+`;
+
+exports[`NoteNav component renders a title with folder name 1`] = `null`;

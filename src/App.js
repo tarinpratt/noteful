@@ -19,8 +19,10 @@ class App extends Component {
         super(props);
         this.state = {
             notes: [],
-            folders: []
+            folders: [],
+          
       };
+  
       }
   
   componentDidMount() {
@@ -38,6 +40,7 @@ class App extends Component {
            return Promise.all([notesRes.json(), foldersRes.json()]);
             
         })
+       
 
         .then(([myNotes, myFolders]) => {
         this.setState({notes: myNotes, folders: myFolders})
@@ -49,10 +52,15 @@ class App extends Component {
         
         
 }
+
+
+
 handleDeleteNote = noteId => {
+   
     this.setState({
         notes: this.state.notes.filter(note => note.id !== noteId)
-    });
+        
+    });  
 };
 handleAddFolder = folder => {
     this.setState({

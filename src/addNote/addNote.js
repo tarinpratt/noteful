@@ -8,16 +8,17 @@ export default class AddNote extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: {
+            note_name: {
                 value: '',
                 touched: false
             },
-            content: {
+            note_content: {
                 value: '',
                 touched: false
             },
-            folderId: {
-              value:''
+            folder_id: {
+              value: 1
+             
             }
 
 
@@ -26,25 +27,26 @@ export default class AddNote extends React.Component {
   static contextType = StoreContext;
 
   updateName(name) {
-    this.setState({name: {value: name, touched: true}});
+    this.setState({note_name: {value: name, touched: true}});
   }
 
   updateContent(content) {
-    this.setState({content: {value: content, touched: true}});
+    this.setState({note_content: {value: content, touched: true}});
   }
 
-  updateFolderId(folderId) {
-    this.setState({folderId: {value: folderId}});
+  updateFolderId(folder_id) {
+  
+    this.setState({folder_id: {value: folder_id}});
   }
   
   validateName() {
-    const name = this.state.name.value.trim();
+    const name = this.state.note_name.value.trim();
     if (name.length < 1) {
       return '* Name is required *';
     } 
   }
   validateContent() {
-    const content = this.state.content.value.trim();
+    const content = this.state.note_content.value.trim();
     if (content.length < 1) {
       return '* Content is required *';
     } 
@@ -52,11 +54,12 @@ export default class AddNote extends React.Component {
 
 handleSubmit = event => {
     event.preventDefault()
+   
     const addedNote = {
-        name: this.state.name.value,
-        content: this.state.content.value,
-        folderId: this.state.folderId.value,
-        modified: new Date()
+        note_name: this.state.note_name.value,
+        note_content: this.state.note_content.value,
+        folder_id: this.state.folder_id.value,
+        date_modified: new Date()
     }
   
 
@@ -80,8 +83,9 @@ handleSubmit = event => {
     });
 }
   render(){
+    console.log(this.state.folder_id)
     const { folders=[] } = this.context
-console.log('add ntoe', this.props)
+
     return <form className="addNote" onSubmit={e => this.handleSubmit(e)}>
     <h2>Add Note</h2> 
     <section className="form-group">
@@ -89,12 +93,12 @@ console.log('add ntoe', this.props)
       <input 
       type="text" 
       className="noteName"
-      name="name" 
-      id="name"
+      name="note_name" 
+      id="note_name"
       aria-label="Name title for added note"
       aria-required="true"
       onChange={e => this.updateName(e.target.value)}/>
-        {this.state.name.touched && (
+        {this.state.note_name.touched && (
   <ValidationError message={this.validateName()} />
 )}
     </section>
@@ -103,11 +107,11 @@ console.log('add ntoe', this.props)
        <input 
        type="text" 
        className="noteContent"
-       name="content" 
-       id="content"
+       name="note_content" 
+       id="note_content"
        aria-label="Content for added note"
        aria-required="true" onChange={e => this.updateContent(e.target.value)}/>
-            {this.state.content.touched && (
+            {this.state.note_content.touched && (
   <ValidationError message={this.validateContent()} />
 )}
    </section>
@@ -115,14 +119,14 @@ console.log('add ntoe', this.props)
        <label htmlFor="folderClass">Folder</label>
        <select 
        type="text"
-       id="folderId" 
-       name="folderId"
+       id="folder_id" 
+       name="folder_id"
        aria-label="Folder to file added note under"
        aria-required="true" 
        onChange={e => this.updateFolderId(e.target.value)}>
            {folders.map((folder) => 
-            <option key={folder.id} value={folder.id}>
-                {folder.name}
+            <option key={folder.id} value={folder.id} >
+                {folder.folder_name}
             </option>
             )}
        </select>
