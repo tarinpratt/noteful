@@ -1,6 +1,7 @@
 {
     "version": 2,
-    "name": "noteful",
+    "alias": "pratttarin-noteful-client",
+    "name": "noteful-client",
     "routes": [
         {
           "src": "^/static/(.*)",
