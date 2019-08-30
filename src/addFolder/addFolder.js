@@ -2,9 +2,10 @@ import React from 'react';
 import StoreContext from '../storeContext';
 import ValidationError from '../validationError';
 import config from '../config';
+import { withRouter } from 'react-router-dom';
 import './addFolder.css';
 
-export default class AddFolder extends React.Component {
+class AddFolder extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -50,6 +51,7 @@ fetch(`${config.API_ENDPOINT}/folders`, {
   })
   .then(data => {
       this.context.addFolder(data)
+      this.props.history.push('/')
   })
   .catch(error => {
     this.setState({ error })
@@ -82,3 +84,5 @@ fetch(`${config.API_ENDPOINT}/folders`, {
   </form>
   }
 }
+
+export default withRouter(AddFolder);

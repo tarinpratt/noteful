@@ -2,9 +2,10 @@ import React from 'react';
 import StoreContext from '../storeContext';
 import ValidationError from '../validationError';
 import config from '../config';
+import { withRouter } from 'react-router-dom';
 import './addNote.css';
 
-export default class AddNote extends React.Component {
+class AddNote extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -77,6 +78,7 @@ handleSubmit = event => {
     })
     .then(data => {
         this.context.addNote(data)
+        this.props.history.push('/')
     })
     .catch(error => {
         this.setState({ error })
@@ -140,3 +142,5 @@ handleSubmit = event => {
   </form>
   }
 }
+
+export default withRouter(AddNote);
